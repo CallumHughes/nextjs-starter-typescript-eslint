@@ -6,7 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "eslint": "eslint --ext .ts,.tsx ."
+    "eslint": "eslint --ext .ts,.tsx .",
+    "prettier": "prettier . --check"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*": "prettier --write",
+    "*.{ts,tsx}": "eslint --cache --fix"
   },
   "dependencies": {
     "eslint-config-prettier": "^8.1.0",
